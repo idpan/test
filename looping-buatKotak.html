@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1{
+        text-align: center;
+      }
+      .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      input{
+        padding-left: 20px;
+        width: 300px;
+        height: 50px;
+        font-size: 24px;
+      }
+      button{
+        width: 100px;
+        height: 50px;
+        font-size: 24px;
+      }
+      .back{
+        display: flex;
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>masukan jumlah jumlah dan style border</h1>
+    <div class="back">
+
+    <div class="container">
+
+  
+      <input class="jumlah" placeholder="jumlah" id="jumlah" type="text" />
+      <br />
+      <input class="style" placeholder="style" type="text" /><br />
+      <input type="text" placeholder="isi" class="isi"><br>
+      <button>mulai</button>
+    </div>
+    <h2></h2>
+  </div>
+
+    <script>
+      const btn = document.querySelector("button");
+      const kotak = document.querySelector("h2");
+      const jumlah = document.querySelector('.jumlah');
+      const style = document.querySelector('.style');
+      const isi = document.querySelector('.isi');
+     
+     
+     
+      btn.addEventListener('click',function(){
+        kotak.innerHTML = cetakkotak(parseInt(jumlah.value),style.value,isi.value);
+
+      })
+     
+      cetakkotak = function(num,style,isi){
+        let border = "";
+        // sisi atas
+        for (i = 1; i <= num; i++) {
+          border = border + style;
+        }
+      border += "<br/>";
+        // sisi samping
+        if (num > 2) {
+          for (j = 1; j <= num - 2; j++) {
+            border += style;
+            for (i = 1; i <= num - 2 + num - 1; i++) {
+              border += isi;
+            }
+            border += style;
+            border += "<br/>";
+          }
+        }
+        // sisi bawah
+        if (num > 1) {
+          for (i = 1; i <= num; i++) {
+            border = border + style ;
+          }
+        }
+        return border;
+      };
+            
+    </script>
+  </body>
+</html>
